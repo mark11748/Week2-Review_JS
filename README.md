@@ -27,14 +27,19 @@ If the query response doesn't include any doctors (for instance, if no doctors m
 
 ## _Specs_
 *  
-_Description_:  
-_Input_:  
-_Output_:
+_Description_: user input search fields via checkbox/radio buttons to determine type of search
+_Input_:  user clicks selector buttons
+_Output_: appropriate fields are displayed
 
 *  
-_Description_:  
-_Input_:  
-_Output_:
+_Description_:  after filling in all fields user clicks button to compile and send their request to the 3rd party
+_Input_:  user clicks "send query" button
+_Output_: request is formatted and sent
+
+*  
+_Description_:  matches are displayed with relevant info
+_Input_:  Response is returned from the 3rd party
+_Output_: processed response is displayed to the screen
 
 **schedule:**  
 
