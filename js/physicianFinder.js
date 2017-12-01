@@ -1,4 +1,4 @@
-require("./../.env").exports.apiKey;
+const apiKey = require("./../.env").apiKey;
 
 export class physicianFinder
 {
@@ -10,16 +10,52 @@ export class physicianFinder
     this.limit      = limit;      //max results to see; defaults to five
     this.location   = location;   //target search location
     this.targetUrl  = undefined;
+    this.results    = [];
   };
   setUrl()
   {
     this.targetUrl="https://api.betterdoctor.com/2016-03-01/doctors?";
-    if (searchType===0) {
-      this.targetUrl = "https://api.betterdoctor.com/2016-03-01/doctors?"+`name=${searchTerm}&location=${location}&skip=0&limit=${limit}&user_key=${apiKey}`;
+    if (this.searchType===0) {
+      this.targetUrl = "https://api.betterdoctor.com/2016-03-01/doctors?"+`name=${this.searchTerm}&location=${this.location}&skip=0&limit=${this.limit}&user_key=${apiKey}`;
     } else {
-      this.targetUrl = "https://api.betterdoctor.com/2016-03-01/doctors?"+`specialty_uid=${searchTerm}&location=${location}&skip=0&limit=${limit}&user_key=${apiKey}`;
+      this.targetUrl = "https://api.betterdoctor.com/2016-03-01/doctors?"+`specialty_uid=${this.searchTerm}&location=${this.location}&skip=0&limit=${this.limit}&user_key=${apiKey}`;
     }
   }
-  
 
+  searchAPI() {
+    let myPromise = new Promise( (success,fail)=>{
+      let myRequest = new XMLHttpRequest;
+      myRequest.open("GET",targetUrl,true);
+
+      myRequest.onload( ()=>{
+        if (myRequest.status == 200)
+        {
+          success(myRequest.response);
+        } else {
+          fail(`Sorry, there was an error. [request status]:${myRequest.status};[request text]:${myRequest.statusText}.`);
+        }
+      });
+
+      myRequest.send();
+    });
+    myPromise.then(
+      function(good){
+        this.results = JSON.parse(good);
+        results.data.forEach(function(x){
+          this.results[this.results.length] = new doctor(x.profile.first_name,
+                                                         x.specialties)});
+      }
+      ,function(bad){
+        console.alert(bad);
+      }
+    );
+  }
+};
+
+export class doctor {
+  constructor(x,y){
+    this.name=x;
+    this.spec=[];
+    y.forEach(function(spec){this.spec.push(spec.name)});
+  }
 };
