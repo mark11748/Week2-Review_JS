@@ -1,0 +1,23 @@
+{
+  "name": "code-review2",
+  "description": "\"week2 JS review\"",
+  "main": "index.js",
+  "authors": [
+    "mark woodward <markwood117@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "moment": "^2.19.2",
+    "bootstrap": "^3.3.7"
+  }
+}
