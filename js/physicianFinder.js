@@ -61,7 +61,7 @@ export class physicianFinder
 export class doctor {
   constructor(x,y,z){
     this.name=x+" "+y;
-    this.spec=[];
-    z.forEach(function(spec){this.spec.push(spec.name)});
+    this.specialties=[];
+    z.forEach(function(spec){this.specialties.push(this.specialties.name)});
   }
 };
