@@ -26,7 +26,7 @@ export class physicianFinder
   }
 
   searchAPI() {
-    if (this.targetUrl == undefined || this.targetUrl == null)
+    if (!this.targetUrl)
     { this.setUrl(); }
     let myPromise = new Promise( (success,fail)=>{
       let myRequest = new XMLHttpRequest;

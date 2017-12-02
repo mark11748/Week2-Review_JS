@@ -46,7 +46,7 @@ _Output_: processed response is displayed to the screen
 * +3:00 - fixing yesterdays work
 * +1:00 - back-end skeleton <start10:30><end:1:43>
 * +1:00 - lunch[amend1]
-* +2:30 - Specs and testing  <start:12:50><>
+* +2:30 - Specs and testing  <start:12:50>[wound up running into major issue; 3:22pm, am now moving on temporarily]
 * +1:30 - back-end and interface write up
 * +0:45 - html & css
 
