@@ -12,8 +12,8 @@ let displayResults = function (search){
 $(document).ready(function(){
   $("#field2").hide();
   $("#field3").hide();
-  $("#field1 button[name=field1]").on('click',function(){
-    switch ($("#field1 select[name=search type]").val()) {
+  $("#field1 button[name=\"field1\"]").on('click',function(){
+    switch (parseInt( $("#field1 select[name=\"search type\"]").val() ) ){
       case 2:
       $("#field1").hide();
       $("#field2").show();
@@ -30,20 +30,20 @@ $(document).ready(function(){
     };
   });
 
-  $("#field2 button[name=field2]").on('click',function(){
-    if (!$("#field2 input[name=doc]").val()) { alert("Something went wrong: we couldn't process your selection"); }
+  $("#field2 button[name=\"field2\"]").on('click',function(){
+    if (!$("#field2 input[name=\"doc\"]").val()) { alert("Something went wrong: we couldn't process your selection"); }
     else {
-      let newNameSearch = new physicianFinder($("#field2 input[name=doc]").val(),0);
-      $("#field2 input[name=doc]").val("");
+      let newNameSearch = new physicianFinder($("#field2 input[name=\"doc\"]").val(),0);
+      $("#field2 input[name=\"doc\"]").val("");
       newNameSearch.searchAPI();
       displayResults(newNameSearch);
     }
   });
-  $("#field3 button[name=field3]").on('click',function(){
-    if (!$("#field3 input[name=spec]").val()) { alert("Something went wrong: we couldn't process your selection"); }
+  $("#field3 button[name=\"field3\"]").on('click',function(){
+    if (!$("#field3 input[name=\"spec\"]").val()) { alert("Something went wrong: we couldn't process your selection"); }
     else {
-      let newSpecSearch = new physicianFinder($("#field2 input[name=doc]").val(),1);
-      $("#field2 input[name=doc]").val("")
+      let newSpecSearch = new physicianFinder($("#field2 input[name=\"doc\"]").val(),1);
+      $("#field2 input[name=\"doc\"]").val("")
       newSpecSearch.searchAPI();
       displayResults(newSpecSearch);
     }

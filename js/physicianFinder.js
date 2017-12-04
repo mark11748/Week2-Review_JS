@@ -10,8 +10,8 @@ export class physicianFinder
     this.limit      = limit;      //max results to see; defaults to five
     this.location   = location;   //target search location
     this.targetUrl  = "";
-    this.results    = [];
-    this.found      = 0;
+    // this.results    = [];
+    // this.found      = 0;
   };
   setUrl()
   {
