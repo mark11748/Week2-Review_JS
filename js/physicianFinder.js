@@ -1,5 +1,4 @@
 const apiKey = require("./../.env").apiKey;
-let displayResults = require("./physicianFinder-interface.js").displayResults;
 
 export class physicianFinder
 {
@@ -17,43 +16,46 @@ export class physicianFinder
     if (this.searchType===0)
     {
       this.targetUrl = "https://api.betterdoctor.com/2016-03-01/doctors?"+`name=${this.searchTerm}&location=${this.location}&skip=0&limit=${this.limit}&user_key=${apiKey}`;
+      debugger;
     }
     else
     {
       this.targetUrl = "https://api.betterdoctor.com/2016-03-01/doctors?"+`specialty_uid=${this.searchTerm}&location=${this.location}&skip=0&limit=${this.limit}&user_key=${apiKey}`;
+      debugger;
     }
   }
 
-  searchAPI() {
+  searchAPI(displayResults) {
     if (!this.targetUrl)
     { this.setUrl(); }
     let that = this;
     let myPromise = new Promise( (success,fail)=>{
       let myRequest = new XMLHttpRequest;
-      let results    = [];
-      let found      = 0;
 
-      myRequest.open("GET",targetUrl,true);
+      myRequest.open("GET",that.targetUrl,true);
 
-      myRequest.onload( ()=>{
+      myRequest.onload = ()=>{
         if (myRequest.status == 200)
         {
           success(myRequest.response);
         } else {
           fail(`Sorry, there was an error. [request status]:${myRequest.status};[request text]:${myRequest.statusText}.`);
         }
-      });
+      };
 
       myRequest.send();
     });
     myPromise.then(
       function(good){
         let matches = JSON.parse(good);
+        let results    = [];
+        let found      = 0;
         matches.data.forEach(function(x){
           results.push(new doctor(x.profile.first_name, x.profile.last_name, x.specialties)) ;
           found++;
         });
-        displayResults(this.found,this.results);
+        alert(`${found} : ${results[0].name}`);
+        displayResults(found,results);
       }
       ,function(bad){
         alert(bad);
@@ -66,6 +68,6 @@ export class doctor {
   constructor(x,y,z){
     this.name=x+" "+y;
     this.specialties=[];
-    z.forEach(function(spec){this.specialties.push(this.specialties.name)});
+    z.forEach( (spec)=>{this.specialties.push(spec.name)} );
   }
 };

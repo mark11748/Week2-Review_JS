@@ -1,11 +1,12 @@
-import{ physicianFinder,doctor } from "./../js/physicianFinder.js";
+import{ physicianFinder , doctor } from "./../js/physicianFinder.js";
 
 let displayResults = function (found,results){
+  debugger;
   $("#CNT").text(found);
   results.forEach(function(n){
     $("#MATCHES").append(`<li><p>${n.name}</p><ol>`); //create opening tags and list name of match
-    n.specialties.forEach(function(listedSpec) { $("#MATCHES").append(`<li>${listedSpec}</li>`); }); //loop to append specialties
-    $("#MATCHES").append(`</ol></li>`); //append close tags
+    n.specialties.forEach(function(listedSpec) { $("#MATCHES ol").append(`<li>${listedSpec}</li>`); }); //loop to append specialties
+    $("#MATCHES").append(`</ol></li><br>`); //append close tags
   });
 };
 
@@ -35,8 +36,8 @@ $(document).ready(function(){
     else {
       let newNameSearch = new physicianFinder($("#field2 input[name=\"doc\"]").val(),0);
       $("#field2 input[name=\"doc\"]").val("");
-      newNameSearch.searchAPI();
-      displayResults(newNameSearch);
+      newNameSearch.setUrl();
+      newNameSearch.searchAPI(displayResults);
     }
   });
   $("#field3 button[name=\"field3\"]").on('click',function(){
@@ -44,8 +45,8 @@ $(document).ready(function(){
     else {
       let newSpecSearch = new physicianFinder($("#field2 input[name=\"doc\"]").val(),1);
       $("#field2 input[name=\"doc\"]").val("")
-      newSpecSearch.searchAPI();
-      displayResults(newSpecSearch);
+      newNameSearch.setUrl();
+      newSpecSearch.searchAPI(displayResults);
     }
   });
 
