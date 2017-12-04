@@ -1,4 +1,5 @@
 const apiKey = require("./../.env").apiKey;
+let displayResults = require("./physicianFinder-interface.js").displayResults;
 
 export class physicianFinder
 {
@@ -10,8 +11,6 @@ export class physicianFinder
     this.limit      = limit;      //max results to see; defaults to five
     this.location   = location;   //target search location
     this.targetUrl  = "";
-    // this.results    = [];
-    // this.found      = 0;
   };
   setUrl()
   {
@@ -28,8 +27,12 @@ export class physicianFinder
   searchAPI() {
     if (!this.targetUrl)
     { this.setUrl(); }
+    let that = this;
     let myPromise = new Promise( (success,fail)=>{
       let myRequest = new XMLHttpRequest;
+      let results    = [];
+      let found      = 0;
+
       myRequest.open("GET",targetUrl,true);
 
       myRequest.onload( ()=>{
@@ -47,9 +50,10 @@ export class physicianFinder
       function(good){
         let matches = JSON.parse(good);
         matches.data.forEach(function(x){
-          this.results.push(new doctor(x.profile.first_name, x.profile.last_name, x.specialties)) ;
-          this.found++;
+          results.push(new doctor(x.profile.first_name, x.profile.last_name, x.specialties)) ;
+          found++;
         });
+        displayResults(this.found,this.results);
       }
       ,function(bad){
         alert(bad);

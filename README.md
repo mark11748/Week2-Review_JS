@@ -12,7 +12,9 @@ If the query response doesn't include any doctors (for instance, if no doctors m
 ## _Installation_
 1. download from github.
 2. install necessary packages & dependancies through your command line by using "npm install" and "bower install"
-3. run index.html in your browser of choice
+3. create .env file
+4. in .env type "exports.apiKey =" followed by your api key (accessible from your https://developer.betterdoctor.com/ account)
+5. run index.html in your browser of choice
 
 ## _Technologies Used_
 * html

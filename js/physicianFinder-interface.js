@@ -1,8 +1,8 @@
-import{ physicianFinder } from "./../js/physicianFinder.js";
+import{ physicianFinder,doctor } from "./../js/physicianFinder.js";
 
-let displayResults = function (search){
-  $("#CNT").text(search.found);
-  search.results.forEach(function(n){
+let displayResults = function (found,results){
+  $("#CNT").text(found);
+  results.forEach(function(n){
     $("#MATCHES").append(`<li><p>${n.name}</p><ol>`); //create opening tags and list name of match
     n.specialties.forEach(function(listedSpec) { $("#MATCHES").append(`<li>${listedSpec}</li>`); }); //loop to append specialties
     $("#MATCHES").append(`</ol></li>`); //append close tags
