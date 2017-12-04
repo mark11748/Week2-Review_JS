@@ -1,18 +1,24 @@
 import{ physicianFinder , doctor } from "./../js/physicianFinder.js";
 
 let displayResults = function (found,results){
-  debugger;
   $("#CNT").text(found);
   results.forEach(function(n){
     $("#MATCHES").append(`<li><p>${n.name}</p><ol>`); //create opening tags and list name of match
     n.specialties.forEach(function(listedSpec) { $("#MATCHES ol").append(`<li>${listedSpec}</li>`); }); //loop to append specialties
     $("#MATCHES").append(`</ol></li><br>`); //append close tags
+
+    $("#OUTPUT").show();
+    $("#field1").show();
+    $("#field2").hide();
+    $("#field3").hide();
   });
 };
 
 $(document).ready(function(){
   $("#field2").hide();
   $("#field3").hide();
+  $("#OUTPUT").hide();
+
   $("#field1 button[name=\"field1\"]").on('click',function(){
     switch (parseInt( $("#field1 select[name=\"search type\"]").val() ) ){
       case 2:

@@ -16,12 +16,10 @@ export class physicianFinder
     if (this.searchType===0)
     {
       this.targetUrl = "https://api.betterdoctor.com/2016-03-01/doctors?"+`name=${this.searchTerm}&location=${this.location}&skip=0&limit=${this.limit}&user_key=${apiKey}`;
-      debugger;
     }
     else
     {
       this.targetUrl = "https://api.betterdoctor.com/2016-03-01/doctors?"+`specialty_uid=${this.searchTerm}&location=${this.location}&skip=0&limit=${this.limit}&user_key=${apiKey}`;
-      debugger;
     }
   }
 
@@ -54,7 +52,6 @@ export class physicianFinder
           results.push(new doctor(x.profile.first_name, x.profile.last_name, x.specialties)) ;
           found++;
         });
-        alert(`${found} : ${results[0].name}`);
         displayResults(found,results);
       }
       ,function(bad){
