@@ -7,7 +7,22 @@ body {
 div {
   border: 10px inset black;
   background-color: #59e0ff;
+  padding-left: 5%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  margin-right: 40%
+}
+#field1{
+  width: 450px;
+}
+#field2{
+  width: 450px;
+}
+#field3{
+  width: 450px;
 }
 #MATCHES {
+  width: 600px;
   padding-left: 10%;
+  margin-right: 10%;
 }

@@ -31,7 +31,7 @@ export class physicianFinder
       let myRequest = new XMLHttpRequest();
 
       myRequest.open("GET",that.targetUrl,true);
-
+console.log(myRequest);
       myRequest.onload = ()=>{
         if (myRequest.status == 200)
         {
