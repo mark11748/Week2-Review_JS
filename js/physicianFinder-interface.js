@@ -34,7 +34,7 @@ $(document).ready(function(){
       default:
       alert("Something went wrong: we couldn't process your selection");
       break;
-    };
+    }
   });
 
   $("#field2 button[name=\"field2\"]").on('click',function(){
@@ -50,7 +50,7 @@ $(document).ready(function(){
     if (!$("#field3 input[name=\"spec\"]").val()) { alert("Something went wrong: we couldn't process your selection"); }
     else {
       let newSpecSearch = new physicianFinder($("#field2 input[name=\"doc\"]").val(),1);
-      $("#field2 input[name=\"doc\"]").val("")
+      $("#field2 input[name=\"doc\"]").val("");
       newNameSearch.setUrl();
       newSpecSearch.searchAPI(displayResults);
     }

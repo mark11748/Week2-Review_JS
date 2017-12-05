@@ -1,0 +1,13 @@
+body {
+  background-color: #b7f1ff;
+  border: 10px outset red;
+  padding-left: 10%;
+
+}
+div {
+  border: 10px inset black;
+  background-color: #59e0ff;
+}
+#MATCHES {
+  padding-left: 10%;
+}

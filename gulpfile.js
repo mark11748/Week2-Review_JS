@@ -48,6 +48,12 @@ gulp.task('concatInterface', function() {
     .pipe(gulp.dest('./tmp'));
 });
 
+gulp.task('concatCSS', function() {
+  return gulp.src(['./css/*.css'])
+    .pipe(concat('masterCSS.css'))
+    .pipe(gulp.dest('./tmp'));
+});
+
 var buildProduction = utilities.env.production;
 
 gulp.task("clean", function(){
@@ -55,6 +61,7 @@ gulp.task("clean", function(){
 });
 
 gulp.task("build", ['clean'], function(){
+  gulp.start('concatCSS');
   if (buildProduction) {
     gulp.start('minifyScripts');
   } else {

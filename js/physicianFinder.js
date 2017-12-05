@@ -10,7 +10,7 @@ export class physicianFinder
     this.limit      = limit;      //max results to see; defaults to five
     this.location   = location;   //target search location
     this.targetUrl  = "";
-  };
+  }
   setUrl()
   {
     if (this.searchType===0)
@@ -28,7 +28,7 @@ export class physicianFinder
     { this.setUrl(); }
     let that = this;
     let myPromise = new Promise( (success,fail)=>{
-      let myRequest = new XMLHttpRequest;
+      let myRequest = new XMLHttpRequest();
 
       myRequest.open("GET",that.targetUrl,true);
 
@@ -53,18 +53,18 @@ export class physicianFinder
           found++;
         });
         displayResults(found,results);
-      }
-      ,function(bad){
+      },
+      function(bad){
         alert(bad);
       }
     );
   }
-};
+}
 
 export class doctor {
   constructor(x,y,z){
     this.name=x+" "+y;
     this.specialties=[];
-    z.forEach( (spec)=>{this.specialties.push(spec.name)} );
+    z.forEach( (spec)=>{this.specialties.push(spec.name);} );
   }
-};
+}
